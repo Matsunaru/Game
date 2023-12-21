@@ -12,7 +12,7 @@ w6 = " "
 w7 = " "
 w8 = " "
 w9 = " "
-
+w = "just to check"
 i = 0
 while True:
     if i == 5:

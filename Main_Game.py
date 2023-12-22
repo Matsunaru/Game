@@ -1,29 +1,27 @@
 import os
 from Logika import *
-
+punkty = 0
 os.system('cls')
+game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
 
-w1 = " "
-w2 = " "
-w3 = " "
-w4 = " "
-w5 = " "
-w6 = " "
-w7 = " "
-w8 = " "
-w9 = " "
-w = "just to check"
+
 i = 0
 while True:
     if i == 5:
         break
-    w1, w2, w3, w4, w5, w6, w7, w8, w9 = Wybor(w1, w2, w3, w4, w5, w6, w7, w8, w9)
-
+    game_board = Wybor(game_board)
+    game_board = BOT_iq0(game_board)
     os.system('cls')
     
-    print(w1,"|",w2,"|",w3)
+    
+    
+    print(game_board[1],"|",game_board[2],"|",game_board[3])
     print("__________")
-    print(w4,"|",w5,"|",w6)
+    print(game_board[4],"|",game_board[5],"|",game_board[6])
     print("__________",)
-    print(w7,"|",w8,"|",w9,)
+    print(game_board[7],"|",game_board[8],"|",game_board[9])
     i += 1
+    if Wygrana(game_board):
+        punkty += 1
+        print(punkty)
+    

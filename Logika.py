@@ -5,14 +5,16 @@ punkty = 0
 
 def Wybor(board):
     while True:
-        player = int(input("gdzie chcesz postawić 'x' ?: \n"))
-        if board[player] == " ":
-            board[player] = "X"
-            return board
-        elif board[player] != " ":
-            print("Podaj wolne miejsce: ")
-            continue
-
+        try:
+            player = int(input("gdzie chcesz postawić 'x' ?: \n"))
+            if board[player] == " ":
+                board[player] = "X"
+                return board
+            elif board[player] != " ":
+                print("Podaj wolne miejsce: ")
+                continue
+        except:
+            print("Gra przyjmuje tylko '1-9' w liczbach")
     
 
 def BOT_iq0(board):
@@ -27,27 +29,27 @@ def BOT_iq0(board):
         else:
             return board
         
-def Wygrana(board):
-    if board[1] == board[2] == board[3] and board[2] != " ":
+def Wygrana(board,winner):
+    if board[1] == board[2] == board[3] and board[2] == winner:
         return True
-    elif board[4] == board[5] == board[6] and board[5] != " ":
+    elif board[4] == board[5] == board[6] and board[5] == winner:
         return True
-    elif board[7] == board[8] == board[9] and board[8] != " ":
+    elif board[7] == board[8] == board[9] and board[8] == winner:
         return True
-    elif board[1] == board[4] == board[7] and board[4] != " ":
+    elif board[1] == board[4] == board[7] and board[4] == winner:
         return True
-    elif board[2] == board[5] == board[8] and board[5] != " ":
+    elif board[2] == board[5] == board[8] and board[5] == winner:
         return True
-    elif board[3] == board[6] == board[9] and board[6] != " ":
+    elif board[3] == board[6] == board[9] and board[6] == winner:
         return True
-    elif board[1] == board[5] == board[9] and board[5] != " ":
+    elif board[1] == board[5] == board[9] and board[5] == winner:
         return True
-    elif board[3] == board[5] == board[7] and board[5] != " ":
+    elif board[3] == board[5] == board[7] and board[5] == winner:
         return True
     return False
 
-def MenuW():
-    choices = ["Kontynuuj","Wyjdz"]
+def MenuW(*args):
+    choices = [arg for arg in args if arg]
     selected_index = 0
 
     while True:
@@ -72,3 +74,16 @@ def MenuW():
             print(f"Wybrano: {choices[selected_index]}")
             return choices[selected_index]
             break
+
+def Plansza(game_board):
+    print(game_board[7],"|",game_board[8],"|",game_board[9])
+    print("__________")
+    print(game_board[4],"|",game_board[5],"|",game_board[6])
+    print("__________",)
+    print(game_board[1],"|",game_board[2],"|",game_board[3])
+
+
+def Remis(board):
+    if any(board[i] == " "for i in range(1, 10)):
+        return False
+    return True

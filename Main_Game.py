@@ -1,31 +1,52 @@
 import os
 from Logika import *
-punkty = 0
-os.system('cls')
-game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
-
-
-i = 0
-while True:
-    game_board = Wybor(game_board)
-    if Wygrana(game_board):
-        punkty += 1
-        Decyzja = MenuW()
-        if Decyzja == "Wyjdz":
-            print(punkty)
-            break
-        elif Decyzja == "Kontynuuj":
-            game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
-            continue
-
-    game_board = BOT_iq0(game_board)
+def Game():
+    punkty = 0
     os.system('cls')
-    
-    
-    
-    print(game_board[1],"|",game_board[2],"|",game_board[3])
-    print("__________")
-    print(game_board[4],"|",game_board[5],"|",game_board[6])
-    print("__________",)
-    print(game_board[7],"|",game_board[8],"|",game_board[9])
-    
+    game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
+
+
+
+    while True:
+        Plansza(game_board)
+        game_board = Wybor(game_board)
+        if Wygrana(game_board,"X"):
+            os.system('cls')
+            Plansza(game_board)
+            punkty += 1
+            input("Wygrałeś naciśnij Enter, aby kontynuować...")
+            Decyzja = MenuW("Kontynuuj","Wyjdz")
+            if Decyzja == "Wyjdz":
+                print(punkty)
+                return
+            elif Decyzja == "Kontynuuj":
+                game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
+                os.system('cls')
+                continue
+        if Remis(game_board):
+            os.system('cls')
+            Plansza(game_board)
+            input("Remis naciśnij Enter, aby kontynuować...")
+            Decyzja = MenuW("Kontynuuj","Wyjdz")
+            if Decyzja == "Wyjdz":
+                print(punkty)
+                return
+            elif Decyzja == "Kontynuuj":
+                game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
+                os.system('cls')
+                continue
+
+        game_board = BOT_iq0(game_board)
+        if Wygrana(game_board,"O"):
+            os.system('cls')
+            Plansza(game_board)
+            input("Pzegrałeś naciśnij Enter, aby kontynuować...")
+            Decyzja = MenuW("Kontynuuj","Wyjdz")
+            if Decyzja == "Wyjdz":
+                print(punkty)
+                return
+            elif Decyzja == "Kontynuuj":
+                game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
+                os.system('cls')
+                continue
+        os.system('cls')

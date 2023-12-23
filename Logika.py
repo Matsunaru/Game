@@ -1,4 +1,6 @@
 import random
+import keyboard
+import os
 punkty = 0
 
 def Wybor(board):
@@ -43,3 +45,30 @@ def Wygrana(board):
     elif board[3] == board[5] == board[7] and board[5] != " ":
         return True
     return False
+
+def MenuW():
+    choices = ["Kontynuuj","Wyjdz"]
+    selected_index = 0
+
+    while True:
+        os.system('cls')
+
+        for i, choice in enumerate(choices):
+            if i == selected_index:
+                print(f"> {choice}")
+            else:
+                print(f"  {choice}")
+
+        key_event = keyboard.read_event(suppress=True)
+
+        if key_event.event_type == keyboard.KEY_UP:
+            continue
+
+        if key_event.name == 'down':
+            selected_index = (selected_index + 1) % len(choices)
+        elif key_event.name == 'up':
+            selected_index = (selected_index - 1) % len(choices)
+        elif key_event.name == 'enter':
+            print(f"Wybrano: {choices[selected_index]}")
+            return choices[selected_index]
+            break

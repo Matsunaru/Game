@@ -1,14 +1,16 @@
 import os
 from Logika import *
+import Opcje
 def Game():
     punkty = 0
     os.system('cls')
     game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
-
+    PoziomH = Opcje.poziomt
 
 
     while True:
         Plansza(game_board)
+        print(PoziomH)
         # Player movment
         game_board = Wybor(game_board)
         if Wygrana(game_board,"X"): #cheking if player win
@@ -36,8 +38,10 @@ def Game():
                 game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
                 os.system('cls')
                 continue
-        # game_board = BOT_iq100(game_board)
-        game_board = BOT_iq0(game_board)
+        if PoziomH == 1:
+            game_board = BOT_iq100(game_board)
+        elif PoziomH == 0:
+            game_board = BOT_iq0(game_board)
         if Wygrana(game_board,"O"): #checking if, Bot win
             os.system('cls')
             Plansza(game_board)

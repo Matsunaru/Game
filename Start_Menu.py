@@ -6,11 +6,11 @@ import os
 from Main_Game import Game
 from Opcje import PoziomTrudności
 while True:
-    itstart = MenuW("Start","Opcje","Wyniki","Wyjdz")
+    itstart = MenuW("Start","Poziom Trudności","Wyniki","Wyjdz")
 # Main Menu with opcion and start game
     if itstart == "Start":
         Game()
-    elif itstart == "Opcje":
+    elif itstart == "Poziom Trudności":
         PoziomTrudności()
     elif itstart == "Wyniki":
         print("ITSTARTWITHNO")

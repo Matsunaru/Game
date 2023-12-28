@@ -11,7 +11,8 @@ To run this game, you need to install the following libraries:
 You can install them using the following command:
 
 ```bash
-pip install keyboard==0.13.5```
+pip install keyboard==0.13.5
+```
 ##Installation Instructions
 
 1. Ensure that you have Python installed.

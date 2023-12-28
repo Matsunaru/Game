@@ -18,7 +18,7 @@ pip install keyboard==0.13.5
 
 1. Ensure that you have Python installed.
 2. Clone this project to your computer.
-3. Run the game using the command python Start_Menu.py.
+3. Run the game using the command python Start_Menu.py
 
 ## Usage Instructions
 1. Control is done with arrow keys Up/Down, and Enter is used to confirm a selection(outside of the game).

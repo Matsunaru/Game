@@ -74,7 +74,6 @@ def MenuW(*args):
         elif key_event.name == 'enter': #confirm buttom
             print(f"Wybrano: {choices[selected_index]}")
             return choices[selected_index]
-            break
 
 def Plansza(game_board): #print Board
     print(game_board[7],"|",game_board[8],"|",game_board[9])
@@ -133,3 +132,27 @@ def minimax(board,depth, is_maximazing):#Minimax
                 board[i - 1] = " "
                 BS = min(score,BS)
         return BS
+    
+def czytanie_wyniki(file_path):#reading scoreboard from file, and puting it in tuple
+    scores = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            name, score = line.strip().split(',')
+            scores.append((name, int(score)))
+    return scores
+
+def najwyzszywynik(scores, new_score):#checking if in scores there are place for new player record
+    return len(scores) < 10 or new_score > min(scores, key=lambda x: x[1])[1]
+
+def dodaj_wynik(scores,new_score,new_name):#adding new scores to the Scores tuple
+    scores.append((new_name,new_score))
+    scores.sort(key=lambda x: x[1],reverse=True)
+    return scores[:10]
+
+def zapisz_wynik(file_path,scores):#save scores tuple in to the file txt
+    with open(file_path, 'w') as file:
+        for name, score in scores:
+            file.write(f"{name},{score}\n")
+
+def zapytaj_nazwe():#asking player for the name
+    return input("Jesteś w top 10 podaj swoją nazwe:")

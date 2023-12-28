@@ -13,7 +13,8 @@ You can install them using the following command:
 ```bash
 pip install keyboard==0.13.5
 ```
-##Installation Instructions
+
+## Installation Instructions
 
 1. Ensure that you have Python installed.
 2. Clone this project to your computer.

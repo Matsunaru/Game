@@ -1,7 +1,11 @@
 import random
 import keyboard
 import os
+import pygame
+import threading
+import time
 punkty = 0
+
 
 def Wybor(board): #funcion that let player choice
     while True:
@@ -69,10 +73,13 @@ def MenuW(*args):
 
         if key_event.name == 'down': # this move you down
             selected_index = (selected_index + 1) % len(choices)
+            play_sound_effect('Sound/UpDown.mp3',1.0)
         elif key_event.name == 'up': #this up
             selected_index = (selected_index - 1) % len(choices)
+            play_sound_effect('Sound/UpDown.mp3',1.0)
         elif key_event.name == 'enter': #confirm buttom
             print(f"Wybrano: {choices[selected_index]}")
+            play_sound_effect('Sound/Enter.mp3',1.0)
             return choices[selected_index]
 
 def Plansza(game_board): #print Board
@@ -156,3 +163,24 @@ def zapisz_wynik(file_path,scores):#save scores tuple in to the file txt
 
 def zapytaj_nazwe():#asking player for the name
     return input("Jesteś w top 10 podaj swoją nazwe:")
+
+def play_sound_effect(file_path, volume):
+    pygame.mixer.init()
+    sound_effect = pygame.mixer.Sound(file_path)
+    sound_effect.set_volume(volume)
+    sound_effect.play()
+
+def play_music(file_path,volume):
+    pygame.mixer.init()
+    pygame.mixer.music.load(file_path)
+    pygame.mixer.music.set_volume(volume)
+    pygame.mixer.music.play(-1)
+
+
+def stop_music():
+    pygame.mixer.music.stop()
+
+def music_thread_function(file_path, volume):
+    play_music(file_path, volume)
+    while pygame.mixer.music.get_busy():
+        time.sleep(1)

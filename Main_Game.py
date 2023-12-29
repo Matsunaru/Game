@@ -8,7 +8,12 @@ def Game():
     PoziomH = Opcje.poziomt
     file_path = "scores.txt"
     scores = czytanie_wyniki(file_path)
-
+    if PoziomH == 0:
+        music_thread = threading.Thread(target=music_thread_function, args=('Sound/Battlemusic0.wav', 0.3))
+        music_thread.start()
+    elif PoziomH == 1:
+        music_thread = threading.Thread(target=music_thread_function, args=('Sound/Battlemusic1.mp3', 0.3))
+        music_thread.start()
     while True:
         Plansza(game_board)
         print(PoziomH)
@@ -26,9 +31,11 @@ def Game():
                     new_name = zapytaj_nazwe()
                     scores = dodaj_wynik(scores, new_score, new_name)
                     zapisz_wynik(file_path, scores)
+                    stop_music()
                 else:
                     print("Wygrałeś: ", new_score,"razy")
                     input("Nacisnij enter,aby przejść do menu głównego")
+                    stop_music()
                     
                 return
             elif Decyzja == "Kontynuuj":
@@ -46,9 +53,11 @@ def Game():
                     new_name = zapytaj_nazwe()
                     scores = dodaj_wynik(scores, new_score, new_name)
                     zapisz_wynik(file_path, scores)
+                    stop_music()
                 else:
                     print("Wygrałeś: ", new_score,"razy")
                     input("Nacisnij enter,aby przejść do menu głównego")
+                    stop_music()
                 return
             elif Decyzja == "Kontynuuj":
                 game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}
@@ -69,9 +78,11 @@ def Game():
                     new_name = zapytaj_nazwe()
                     scores = dodaj_wynik(scores, new_score, new_name)
                     zapisz_wynik(file_path, scores)
+                    stop_music()
                 else:
                     print("Wygrałeś: ", new_score,"razy")
                     input("Nacisnij enter,aby przejść do menu głównego")
+                    stop_music()
                 return
             elif Decyzja == "Kontynuuj":
                 game_board = {1: " ",2: " ", 3: " ",4: " ", 5: " ", 6: " ", 7: " ",8: " ",9: " "}

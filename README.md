@@ -3,15 +3,16 @@
 A simple tic-tac-toe game written in Python, allowing you to play against the computer.
 
 ## Required Dependencies
-
 To run this game, you need to install the following libraries:
 
 - `keyboard`: a library for non-blocking keyboard input.
+- `pygame`: a set of Python modules designed for writing video games, including sound playback.
 
-You can install them using the following command:
+You can install them using the following commands:
 
 ```bash
 pip install keyboard==0.13.5
+pip install pygame==2.5.2
 ```
 
 ## Installation Instructions

@@ -12,6 +12,8 @@ You can install them using the following commands:
 
 ```bash
 pip install keyboard==0.13.5
+```
+```bash
 pip install pygame==2.5.2
 ```
 

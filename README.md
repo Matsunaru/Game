@@ -51,3 +51,10 @@ pip install pygame==2.5.2
 ## Authors
 
 - Creator: [Matsunaru]
+
+## License
+Coppyright free sound/music
+- https://www.youtube.com/watch?v=X-aU6-cSRdA&ab_channel=LTSoundEffects (Enter Sound)
+- https://www.youtube.com/watch?v=_vs49MJwwSw&ab_channel=FreeSoundEffectsFesliyanStudios (Up/Down)
+- Sean Phillips - www.seanphillipsmusic.co.uk - https://www.youtube.com/watch?v=bsF4MLRE1vU&ab_channel=SeanPhillipsMusic (GameMusic for Kidbot)
+- https://www.youtube.com/watch?v=kHQ9Ey-enmU&ab_channel=Leviathan_Music (GameMusic for Topbot)

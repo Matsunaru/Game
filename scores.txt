@@ -1,10 +1,21 @@
 Rick,1000
-TOP2, 0
-Top3, 0
-Top4, 0
-TOP5, 0
-Top6, 0
-Top7, 0
-TOP8, 0
-Top9, 0
-Top10, 0
+now,3
+,2
+adi,2
+ad,1
+adxxsssssss,1
+aa,1
+,1
+aa,1
+aXXXXXX,1
+Adi,1
+12,1
+TOP2,0
+Top3,0
+Top4,0
+TOP5,0
+TOP6,0
+TOP7,0
+TOP8,0
+Top9,0
+Top10,0

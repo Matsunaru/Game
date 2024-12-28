@@ -84,10 +84,7 @@ def Game(stdscr):
         game_board = Wybor()
         if Wygrana(game_board, "X"):
             config.new_score += 1
-            stdscr.addstr(8, 0, "Wygrałeś! Naciśnij Enter, aby kontynuować...")
-            stdscr.refresh()
-                
-            Decyzja = menu("endgame", )
+            Decyzja = menu("endgame", stdscr, 1)
             if Decyzja == 2:  # Wyjdz
                 close()
                 return False
@@ -95,10 +92,7 @@ def Game(stdscr):
                 return True
 
         if Remis(game_board):
-            stdscr.addstr(8, 0, "Remis!")
-            stdscr.refresh()
-
-            Decyzja = menu("endgame", stdscr)
+            Decyzja = menu("endgame", stdscr, 0)
             if Decyzja == 2:  # Wyjdz
                 close()
                 return False
@@ -111,9 +105,7 @@ def Game(stdscr):
             game_board = BOT_iq0(game_board)
 
         if Wygrana(game_board, "O"):
-            stdscr.addstr(8, 0, "Przegrałeś!")
-            stdscr.refresh()
-            Decyzja = menu("endgame")
+            Decyzja = menu("endgame", stdscr, -1)
             if Decyzja == 2:  # Wyjdz
                 close()
                 return False

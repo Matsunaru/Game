@@ -7,7 +7,7 @@ def load_menu_choices(menu_type):
         return {i + 1: f"{score}" for i, score in enumerate(config.scores)}
     return config.MENU_CHOICES.get(menu_type, {})
 
-def menu(menu_type, stdscr=None):
+def menu(menu_type, stdscr=None, win=None):
     choices = load_menu_choices(menu_type)
     if not choices:
         print("Nie znaleziono opcji dla tego menu.")
@@ -19,7 +19,6 @@ def menu(menu_type, stdscr=None):
     def draw_menu(stdscr):
         nonlocal selected_index
         curses.curs_set(0)  # Disable cursor
-        stdscr.clear()
 
         while True:
             stdscr.clear()
@@ -32,6 +31,14 @@ def menu(menu_type, stdscr=None):
             if (menu_type == "difficulty" or menu_type == "leaderboard"):
                 back_prefix = "> " if selected_index == len(keys) else "  "
                 stdscr.addstr(len(keys) + 3, 2, f"{back_prefix}Powrót")
+                
+            if menu_type == 'endgame':
+                if win == 1:
+                    stdscr.addstr(5, 0, f"-- Wygrales --")
+                elif win == 0:
+                    stdscr.addstr(5, 0, f"-- Remis --")
+                elif win == -1:
+                    stdscr.addstr(5, 0, f"-- Przegrales --")
 
             stdscr.refresh()
             key = stdscr.getch()
